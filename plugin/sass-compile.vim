@@ -53,7 +53,7 @@ endfunction
 function! s:SassCompile()
     let i = 0
     let cmd = ''
-    let org = expand('%:p:h')
+    let org = getcwd()
     let dir = org.'/'
     let check = 0
     while i < g:auto_make_cdloop
