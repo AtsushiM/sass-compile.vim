@@ -25,3 +25,7 @@ let g:sass_compile_sassdir = ['scss', 'sass']
 
 " cssファイルが入っているディレクトリ名（前のディレクトリほど優先）
 let g:sass_compile_cssdir = ['css', 'stylesheet']
+
+" コンパイル実行後に実行したいコマンドを設定
+" 例：growlnotifyによる通知
+" let g:sass_compile_aftercmd = "growlnotify -t 'sass-compile' -m 'complete.'"
