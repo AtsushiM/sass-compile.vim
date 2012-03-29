@@ -59,7 +59,7 @@ function! sasscompile#SassCompile()
         unlet check
         let check = sasscompile#CompassCheck()
         if check == 1
-            let cmd = 'compass compile&'
+            let cmd = 'compass compile'
         else
             unlet check
             let check = sasscompile#SassCheck()
@@ -69,7 +69,7 @@ function! sasscompile#SassCompile()
                     let bourbon =  ' -r ./'.check[0].'/bourbon/lib/bourbon.rb'
                 endif
 
-                let cmd = 'sass --update '.check[0].':'.check[1].bourbon.'&'
+                let cmd = 'sass --update '.check[0].':'.check[1].bourbon
             endif
         endif
 
@@ -78,6 +78,10 @@ function! sasscompile#SassCompile()
             let dir = dir.'../'
             exec 'silent cd '.dir
         else
+            if g:sass_compile_aftercmd != ''
+                let cmd = cmd.'|'.g:sass_compile_aftercmd
+            endif
+            let cmd = cmd.'&'
             call system(cmd)
             break
         endif

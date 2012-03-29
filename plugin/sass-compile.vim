@@ -18,6 +18,10 @@ endif
 if !exists("g:sass_compile_cssdir")
     let g:sass_compile_cssdir = ['css', 'stylesheet']
 endif
+if !exists("g:sass_compile_aftercmd")
+    let g:sass_compile_aftercmd = ''
+endif
+
 
 command! BourbonInstall call sasscompile#BourbonInstall()
 command! CompassCreate call sasscompile#CompassCreate()
