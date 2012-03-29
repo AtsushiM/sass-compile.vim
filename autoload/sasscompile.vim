@@ -55,7 +55,7 @@ function! sasscompile#SassCompile()
     let org = getcwd()
     let dir = expand('%:p:h').'/'
     let check = 0
-    while i < g:auto_make_cdloop
+    while i < g:sass_compile_cdloop
         unlet check
         let check = sasscompile#CompassCheck()
         if check == 1
