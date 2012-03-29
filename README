@@ -1,11 +1,23 @@
-:GitList
-保存したGithubのレポジトリ一覧を開きます。
-新たに一覧に追加することも可能です。
-※追加する場合、xxx/yyyの形式で追加してください
+:SassCompile
+Sassのコンパイルを行います。
+現在編集中のファイルから逆上って、config.rb(compass用設定ファイル)か
+特定のフォルダ名(sass,cssのフォルダ)を発見した場合、コンパイルを実行します。
 
-ダウンロードしたいレポジトリの上でEnter（Return）ボタンを押すことで
-現在のディレクトリにダウンロード(git clone)を実行します。
+:CompassCreate
+compass createコマンドを実行します。
+生成されるフォルダは設定によって変更可能です。
 
-:GetGitRepo xxx/yyy
-xxx/yyyの形式でgithubのレポジトリを指定することで現在ディレクトリに
-レポジトリのダウンロード(git clone)します
+" 編集したファイルから遡るフォルダの最大数
+let g:sass_compile_cdloop = 5
+
+" ファイル保存時に自動コンパイル（1出自動実行）
+let g:sass_compile_auto = 0
+
+" 自動コンパイルを実行する拡張子
+let g:sass_compile_file = ['scss', 'sass']
+
+" sassファイルが入っているディレクトリ名（前のディレクトリほど優先）
+let g:sass_compile_sassdir = ['scss', 'sass']
+
+" cssファイルが入っているディレクトリ名（前のディレクトリほど優先）
+let g:sass_compile_cssdir = ['css', 'stylesheet']
