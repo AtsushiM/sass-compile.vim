@@ -16,14 +16,6 @@ function! sasscompile#BourbonCheck(dir)
     return 0
 endfunction
 function! sasscompile#SassCheck()
-    let sass = ''
-    for e in g:sass_compile_sassdir
-        if isdirectory(e)
-            let sass = e
-            break
-        endif
-    endfor
-
     let css = ''
     for e in g:sass_compile_cssdir
         if isdirectory(e)
@@ -31,10 +23,7 @@ function! sasscompile#SassCheck()
             break
         endif
     endfor
-    if sass != '' && css != ''
-        return [sass, css]
-    endif
-    return []
+    return css
 endfunction
 
 function! sasscompile#CompassCreate()
@@ -53,7 +42,8 @@ function! sasscompile#SassCompile()
     let i = 0
     let cmd = ''
     let org = getcwd()
-    let dir = expand('%:p:h').'/'
+    let fdir = expand('%:p:h')
+    let dir = fdir.'/'
     let check = 0
     while i < g:sass_compile_cdloop
         unlet check
@@ -63,13 +53,13 @@ function! sasscompile#SassCompile()
         else
             unlet check
             let check = sasscompile#SassCheck()
-            if check != []
+            if check != ''
                 let bourbon = ''
-                if sasscompile#BourbonCheck(check[0]) == 1
-                    let bourbon =  ' -r ./'.check[0].'/bourbon/lib/bourbon.rb'
+                if sasscompile#BourbonCheck(check) == 1
+                    let bourbon =  ' -r '.fdir.'/bourbon/lib/bourbon.rb'
                 endif
 
-                let cmd = 'sass --update '.check[0].':'.check[1].bourbon
+                let cmd = 'sass --update '.fdir.':'.check.bourbon
             endif
         endif
 
