@@ -1,8 +1,9 @@
 :SassCompile
 Sassのコンパイルを行います。
 現在編集中のファイルから逆上って、config.rb(compass用設定ファイル)か
-特定のフォルダ名(sass,cssのフォルダ)を発見した場合、コンパイルを実行します。
-sassフォルダ内にbourbonフォルダが存在する場合、bourbon用の設定でコンパイルされます。
+特定のフォルダ名(cssのフォルダ)を発見した場合、コンパイルを実行します。
+sassファイルを設置しているフォルダ内にbourbonフォルダが存在する場合、
+bourbon用の設定でコンパイルされます。
 
 :CompassCreate
 compass createコマンドを実行します。
@@ -19,9 +20,6 @@ let g:sass_compile_auto = 0
 
 " 自動コンパイルを実行する拡張子
 let g:sass_compile_file = ['scss', 'sass']
-
-" sassファイルが入っているディレクトリ名（前のディレクトリほど優先）
-let g:sass_compile_sassdir = ['scss', 'sass']
 
 " cssファイルが入っているディレクトリ名（前のディレクトリほど優先）
 let g:sass_compile_cssdir = ['css', 'stylesheet']
