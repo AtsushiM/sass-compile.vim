@@ -69,7 +69,7 @@ function! sasscompile#SassCompile()
             exec 'silent cd '.dir
         else
             if g:sass_compile_aftercmd != ''
-                let cmd = cmd.'|'.g:sass_compile_aftercmd
+                let cmd = cmd.g:sass_compile_aftercmd
             endif
             let cmd = cmd.'&'
             call system(cmd)
