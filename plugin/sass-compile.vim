@@ -13,7 +13,7 @@ if !exists("g:sass_compile_file")
     let g:sass_compile_file = ['scss', 'sass']
 endif
 if !exists("g:sass_compile_sassdir")
-    let g:sass_compile_cssdir = ['scss', 'sass', 'css', 'stylesheet']
+    let g:sass_compile_sassdir = ['scss', 'sass', 'css', 'stylesheet']
 endif
 if !exists("g:sass_compile_cssdir")
     let g:sass_compile_cssdir = ['css', 'stylesheet']
