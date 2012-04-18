@@ -3,6 +3,19 @@
 "VERSION:  0.9
 "LICENSE:  MIT
 
+if !exists("g:sass_compile_cdloop")
+    let g:sass_compile_cdloop = 5
+endif
+if !exists("g:sass_compile_sassdir")
+    let g:sass_compile_sassdir = ['scss', 'sass', 'css', 'stylesheet']
+endif
+if !exists("g:sass_compile_cssdir")
+    let g:sass_compile_cssdir = ['css', 'stylesheet']
+endif
+if !exists("g:sass_compile_aftercmd")
+    let g:sass_compile_aftercmd = ''
+endif
+
 function! sasscompile#CompassCheck()
     if filereadable('config.rb')
         return 1
