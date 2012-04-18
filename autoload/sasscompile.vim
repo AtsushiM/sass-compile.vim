@@ -3,6 +3,9 @@
 "VERSION:  0.9
 "LICENSE:  MIT
 
+let s:save_cpo = &cpo
+set cpo&vim
+
 if !exists("g:sass_compile_cdloop")
     let g:sass_compile_cdloop = 5
 endif
@@ -91,3 +94,5 @@ function! sasscompile#SassCompile()
     endwhile
     exec 'silent cd '.org
 endfunction 
+
+let &cpo = s:save_cpo

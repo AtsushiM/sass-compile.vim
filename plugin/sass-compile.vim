@@ -3,6 +3,14 @@
 "VERSION:  0.9
 "LICENSE:  MIT
 
+if exists("g:loaded_sass_compile")
+    finish
+endif
+let g:loaded_sass_compile = 1
+
+let s:save_cpo = &cpo
+set cpo&vim
+
 if !exists("g:sass_compile_file")
     let g:sass_compile_file = ['scss', 'sass']
 endif
@@ -23,3 +31,5 @@ function! s:SetAutoCmd()
     endif
 endfunction
 au VimEnter * call s:SetAutoCmd()
+
+let &cpo = s:save_cpo
