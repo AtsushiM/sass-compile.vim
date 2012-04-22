@@ -3,18 +3,21 @@
 "VERSION:  0.9
 "LICENSE:  MIT
 
+if !executable('sass')
+    echohl ErrorMsg
+    echo 'requires sass.'
+    echohl None
+    finish
+endif
+
 if exists("g:loaded_sass_compile")
     finish
 endif
+
 let g:loaded_sass_compile = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
-
-if !executable('sass')
-    echo 'requires sass.'
-    finish
-endif
 
 if !exists("g:sass_compile_file")
     let g:sass_compile_file = ['scss', 'sass']
