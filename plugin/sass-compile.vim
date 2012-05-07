@@ -28,6 +28,7 @@ endif
 
 command! BourbonInstall call sasscompile#BourbonInstall()
 command! CompassCreate call sasscompile#CompassCreate()
+command! CompassConfig call sasscompile#CompassConfig()
 command! SassCompile call sasscompile#SassCompile()
 
 " sass auto compile
