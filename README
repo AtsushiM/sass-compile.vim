@@ -9,6 +9,9 @@ bourbon用の設定でコンパイルされます。
 compass createコマンドを実行します。
 生成されるフォルダは設定によって変更可能です。
 
+:CompassConfig
+compassの設定ファイル(config.rb)をeditコマンドで開きます。
+
 :BourbonInstall
 bourbon installコマンドを実行します。
 
