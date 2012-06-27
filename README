@@ -29,4 +29,6 @@ let g:sass_compile_cssdir = ['css', 'stylesheet']
 
 " コンパイル実行後に実行したいコマンドを設定
 " 例：growlnotifyによる通知
-" let g:sass_compile_aftercmd = " && growlnotify -t 'sass-compile' -m 'complete.'"
+" let g:sass_compile_beforecmd = "growlnotify -t 'sass-compile.vim' -m 'start sass compile.'"
+" let g:sass_compile_aftercmd = "growlnotify -t 'sass-compile.vim' -m ${sasscompileresult}"
+
