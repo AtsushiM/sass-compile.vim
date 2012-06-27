@@ -27,8 +27,11 @@ let g:sass_compile_file = ['scss', 'sass']
 " cssファイルが入っているディレクトリ名（前のディレクトリほど優先）
 let g:sass_compile_cssdir = ['css', 'stylesheet']
 
-" コンパイル実行後に実行したいコマンドを設定
+" コンパイル実行前に実行したいコマンドを設定
 " 例：growlnotifyによる通知
 " let g:sass_compile_beforecmd = "growlnotify -t 'sass-compile.vim' -m 'start sass compile.'"
+
+" コンパイル実行後に実行したいコマンドを設定
+" 例：growlnotifyによる通知(${sasscompileresult}は実行結果)
 " let g:sass_compile_aftercmd = "growlnotify -t 'sass-compile.vim' -m ${sasscompileresult}"
 
