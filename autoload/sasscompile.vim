@@ -114,7 +114,7 @@ function! sasscompile#SassCompile()
                 call system(g:sass_compile_beforecmd)
             endif
             if g:sass_compile_aftercmd != ''
-                let cmd = "sasscompileresult=$(".cmd.")\n ".g:sass_compile_aftercmd
+                let cmd = "sasscompileresult=$(".cmd."|sed s/'\[[0-9]*m'/''/g|sed s/' '/'_'/g)\n ".g:sass_compile_aftercmd
             endif
             let cmd = cmd.'&'
             call system(cmd)
