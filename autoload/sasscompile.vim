@@ -87,11 +87,14 @@ function! sasscompile#SassCompile()
     let fdir = expand('%:p:h')
     let dir = fdir.'/'
     let check = 0
+    let compassFlg = 0
+
     while i < g:sass_compile_cdloop
         unlet check
         let check = sasscompile#CompassCheck()
         if check == 1
             let cmd = 'compass compile'
+            let compassFlg = 1
         else
             unlet check
             let check = sasscompile#SassCheck()
@@ -110,14 +113,26 @@ function! sasscompile#SassCompile()
             let dir = dir.'../'
             exec 'silent cd '.dir
         else
-            if g:sass_compile_beforecmd != ''
-                call system(g:sass_compile_beforecmd)
+            let compileFlg = 1
+
+            if compassFlg == 1
+                let configfile = readfile('config.rb')
+
+                if configfile[0] == '# auto-compile stopped.'
+                    let compileFlg = 0
+                endif
             endif
-            if g:sass_compile_aftercmd != ''
-                let cmd = "sasscompileresult=$(".cmd."|sed s/'\[[0-9]*m'/''/g|tr '\\n' '__'|tr ' ' '_')\n ".g:sass_compile_aftercmd
+
+            if compileFlg == 1
+                if g:sass_compile_beforecmd != ''
+                    call system(g:sass_compile_beforecmd)
+                endif
+                if g:sass_compile_aftercmd != ''
+                    let cmd = "sasscompileresult=$(".cmd."|sed s/'\[[0-9]*m'/''/g|tr '\\n' '__'|tr ' ' '_')\n ".g:sass_compile_aftercmd
+                endif
+                let cmd = '('.cmd.')&'
+                call system(cmd)
             endif
-            let cmd = '('.cmd.')&'
-            call system(cmd)
             break
         endif
     endwhile
