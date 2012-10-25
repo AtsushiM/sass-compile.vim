@@ -69,8 +69,25 @@ function! sasscompile#CompassConfig()
 endfunction
 
 function! sasscompile#CompassCreate()
-    let cmd = 'compass create --sass-dir "'.g:sass_compile_sassdir[0].'" --css-dir "'.g:sass_compile_cssdir[0].'"'
+    let cmd = 'compass create --sass-dir "'.g:sass_compile_sassdir[0].'" --css-dir "'.g:sass_compile_cssdir[0].'" --output-style compressed'
     call system(cmd)
+
+    " cache config
+    let configfile = readfile('config.rb')
+    let configfile = add(configfile, 'cache = false')
+    call writefile(configfile, 'config.rb', 'b')
+
+    " remove cache
+    call system('rm -rf .sass-cache')
+
+    " remove sass & css
+    call system('rm -rf '.g:sass_compile_sassdir[0].'/ie.scss')
+    call system('rm -rf '.g:sass_compile_sassdir[0].'/print.scss')
+    call system('rm -rf '.g:sass_compile_sassdir[0].'/ie.sass')
+    call system('rm -rf '.g:sass_compile_sassdir[0].'/print.sass')
+    call system('rm -rf '.g:sass_compile_cssdir[0].'/ie.css')
+    call system('rm -rf '.g:sass_compile_cssdir[0].'/print.css')
+
     echo cmd
 endfunction
 
