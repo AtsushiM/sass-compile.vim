@@ -40,3 +40,10 @@ let g:sass_compile_cssdir = ['css', 'stylesheet']
 " 例：growlnotifyによる通知(${sasscompileresult}は実行結果)
 " let g:sass_compile_aftercmd = "growlnotify -t 'sass-compile.vim' -m ${sasscompileresult}"
 ```
+
+## 注意
+vimの$PATHでcompassへのパスが通ってない場合、コンパイルされない場合があります。
+その場合はvimrcなどで$PATHの設定が必要です。
+```
+let $PATH=$PATH."path_to_compass"
+```
