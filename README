@@ -1,20 +1,25 @@
-:SassCompile
+# sass-compile.vim
+sass、compassの自動コンパイルを提供するプラグインです。
+scssファイルの保存時などに自動的にコンパイルコマンドを実行します。
+compass watchなどと違い、保存毎にコマンドを発行するため、
+プロセスが残らず、複数の案件の切替が激しい方などにおすすめです。
+
+## install
+```
+NeoBundle 'AtsushiM/search-parent.vim'
+NeoBundle 'AtsushiM/sass-compile.vim'
+```
+
+### :SassCompile
 Sassのコンパイルを行います。
 現在編集中のファイルから逆上って、config.rb(compass用設定ファイル)か
 特定のフォルダ名(cssのフォルダ)を発見した場合、コンパイルを実行します。
-sassファイルを設置しているフォルダ内にbourbonフォルダが存在する場合、
-bourbon用の設定でコンパイルされます。
 
-:CompassCreate
-compass createコマンドを実行します。
-生成されるフォルダは設定によって変更可能です。
-
-:CompassConfig
+### :CompassConfig
 compassの設定ファイル(config.rb)をeditコマンドで開きます。
 
-:BourbonInstall
-bourbon installコマンドを実行します。
-
+## 設定例
+```
 " 編集したファイルから遡るフォルダの最大数
 let g:sass_compile_cdloop = 5
 
@@ -34,4 +39,4 @@ let g:sass_compile_cssdir = ['css', 'stylesheet']
 " コンパイル実行後に実行したいコマンドを設定
 " 例：growlnotifyによる通知(${sasscompileresult}は実行結果)
 " let g:sass_compile_aftercmd = "growlnotify -t 'sass-compile.vim' -m ${sasscompileresult}"
-
+```
