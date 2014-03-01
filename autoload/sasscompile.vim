@@ -48,12 +48,6 @@ function! sasscompile#CompassCheck()
     endif
     return 0
 endfunction
-function! sasscompile#BourbonCheck(dir)
-    if isdirectory(a:dir.'/bourbon')
-        return 1
-    endif
-    return 0
-endfunction
 function! sasscompile#SassCheck()
     let css = ''
     for e in g:sass_compile_cssdir
@@ -91,12 +85,6 @@ function! sasscompile#CompassConfig()
     exec cmd
 endfunction
 
-function! sasscompile#BourbonInstall()
-    let cmd = 'bourbon install'
-    call system(cmd)
-    echo cmd
-endfunction
-
 function! sasscompile#SassCompile()
     let i = 0
     let cmd = ''
@@ -116,12 +104,7 @@ function! sasscompile#SassCompile()
             unlet check
             let check = sasscompile#SassCheck()
             if check != ''
-                let bourbon = ''
-                if sasscompile#BourbonCheck(check) == 1
-                    let bourbon =  ' -r '.fdir.'/bourbon/lib/bourbon.rb'
-                endif
-
-                let cmd = 'sass --update '.fdir.':'.check.bourbon
+                let cmd = 'sass --update '.fdir.':'.check
             endif
         endif
 

@@ -26,7 +26,6 @@ if !exists("g:sass_compile_auto")
     let g:sass_compile_auto = 0
 endif
 
-command! BourbonInstall call sasscompile#BourbonInstall()
 command! CompassCreate call sasscompile#CompassCreate()
 command! CompassConfig call sasscompile#CompassConfig()
 command! SassCompile call sasscompile#SassCompile()
